@@ -44,6 +44,7 @@ body {
   margin-left: 10%;
   margin-right: 10%;
   border: 1px solid black;
+  border-radius: 10px;
   display: flex;
   justify-content: space-evenly;
   flex-direction: row;
@@ -60,3 +61,31 @@ body {
   flex-direction: row;
   justify-content: space-around;
 } */
+
+/* Standard card component */
+.standard-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.standard-details {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  border-radius: 10px;
+  align-items: center;
+}
+
+/* Daycards card phone component */
+.daycards-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin-bottom: 5px;
+}
+.daycards-title {
+  transform: rotate(-90deg);
+}
