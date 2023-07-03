@@ -1,12 +1,9 @@
 class Complexcard extends HTMLElement {
   constructor() {
     super();
-    this.attachShadow({
-      mode: "open",
-    }).innerHTML = `<slot name="complexcard"></slot>`;
-  }
-  connectedCallback() {
-    this.innerHTML = `<section slot ="complexcard">
+    this.template = document.createElement("template");
+    this.template.innerHTML = `<link rel="stylesheet" href="./components/Complexcard.css" type="text/css" />
+    <section>
 <div class="complexcard-card">
   <div class="complexcard-desc-top">
      <h4>1</h4>
@@ -21,8 +18,12 @@ class Complexcard extends HTMLElement {
      <h4>5</h4>
   </div>
 </div>
-    
     </section>`;
+
+    this.attachShadow({
+      mode: "open",
+    });
+    this.shadowRoot.appendChild(this.template.content.cloneNode(true));
   }
 }
 

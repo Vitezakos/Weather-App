@@ -1,91 +1,44 @@
-body {
-  margin: 0;
-}
+@media only screen and (max-width: 850px) {
+  html {
+    margin: 2rem;
+    font-size: 12px;
+  }
 
-/* Dropdown component */
+  /* Dropdown component */
 
-.dropdown {
-  display: inline-block;
-  position: relative;
-}
+  .dropdown {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
 
-.dropdown-btn {
-  border: none;
-  border-radius: 5px;
-  padding: 15px 30px;
-  font-size: 18px;
-  cursor: pointer;
-}
+  .dropdown-btn {
+    border: none;
+    border-radius: 5px;
+    padding: 15px 30px;
+    font-size: 18px;
+    cursor: pointer;
+  }
 
-.dropdown-options {
-  display: none;
-  position: absolute;
-  overflow: auto;
-  background-color: #fff;
-  border-radius: 5px;
-  box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.4);
-}
+  .dropdown-options {
+    display: none;
+    position: absolute;
+    overflow: auto;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.4);
+  }
 
-.dropdown .dropdown-show {
-  display: block;
-}
+  .dropdown .dropdown-show {
+    display: block;
+  }
 
-.dropdown-options a {
-  display: block;
-  color: #000000;
-  padding: 5px;
-  text-decoration: none;
-  padding: 20px 40px;
-}
-
-/* Complex phone card component */
-
-.complexcard-card {
-  margin-left: 10%;
-  margin-right: 10%;
-  border: 1px solid black;
-  border-radius: 10px;
-  display: flex;
-  justify-content: space-evenly;
-  flex-direction: row;
-  align-items: baseline;
-}
-
-/* .complexcard-desc-top {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-}
-.complexcard-desc-bottom {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-} */
-
-/* Standard card component */
-.standard-card {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-}
-.standard-details {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid black;
-  border-radius: 10px;
-  align-items: center;
-}
-
-/* Daycards card phone component */
-.daycards-card {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  border: 1px solid black;
-  border-radius: 10px;
-  margin-bottom: 5px;
-}
-.daycards-title {
-  transform: rotate(-90deg);
+  .dropdown-options a {
+    display: block;
+    color: #000000;
+    padding: 5px;
+    text-decoration: none;
+    padding: 20px 40px;
+  }
 }

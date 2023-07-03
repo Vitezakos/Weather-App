@@ -1,0 +1,14 @@
+@media only screen and (max-width: 850px) {
+  /* Complex phone card component */
+
+  .complexcard-card {
+    border: 1px solid black;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    align-items: baseline;
+    margin-bottom: 2rem;
+    font-size: 12px;
+  }
+}

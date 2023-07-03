@@ -1,12 +1,9 @@
 class Daycards extends HTMLElement {
   constructor() {
     super();
-    this.attachShadow({
-      mode: "open",
-    }).innerHTML = `<slot name="daycards"></slot>`;
-  }
-  connectedCallback() {
-    this.innerHTML = `<section slot="daycards">
+    this.template = document.createElement("template");
+    this.template.innerHTML = `<link rel="stylesheet" href="./components/Daycards.css" type="text/css" />
+    <section slot="daycards">
       <div class="daycards">
         <div class="daycards-card">
           <h2 class="daycards-title">Thursday</h2>
@@ -142,7 +139,12 @@ class Daycards extends HTMLElement {
             </div>
         </div>
       </div>
-    </section>`;
+    </section>
+    `;
+    this.attachShadow({
+      mode: "open",
+    });
+    this.shadowRoot.appendChild(this.template.content.cloneNode(true));
   }
 }
 

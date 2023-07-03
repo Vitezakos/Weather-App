@@ -1,0 +1,7 @@
+@media only screen and (max-width: 850px) {
+  body {
+    background-image: url("../images/summer.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+}
