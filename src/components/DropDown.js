@@ -1,6 +1,8 @@
 class DropDown extends HTMLElement {
   constructor() {
     super();
+    // DON'T FORGET TO REMOVE BEFORE PUSH!!
+    this.apiKey = "";
     this.locations = {
       hu: "Budapest",
       no: "Oslo",
@@ -77,13 +79,15 @@ class DropDown extends HTMLElement {
   }
 
   fetchRequest(city, state) {
-    const url = `http://api.openweathermap.org/data/2.5/weather?q=${city},${state}`;
+    const url = `http://api.openweathermap.org/data/2.5/weather?q=${city},${state}${this.apiKey}`;
     fetch(url)
       .then((response) => {
         return response.json();
       })
       .then((data) => {
-        console.log(data);
+        this.dispatchEvent(
+          new CustomEvent("citychanged", { detail: { message: data } })
+        );
       })
       .catch((error) => {
         console.log(error);

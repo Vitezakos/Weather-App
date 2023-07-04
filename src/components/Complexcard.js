@@ -6,16 +6,16 @@ class Complexcard extends HTMLElement {
     <section>
 <div class="complexcard-card">
   <div class="complexcard-desc-top">
-     <h4>1</h4>
-     <h4>2</h4>
+     <h4>Thursday</h4>
+     <h4>High <br>25</h4>
   </div>
   <div class="complexcard-desc-middle">
-     <img src="" alt="">
-     <h4>3</h4>
+     <img src="../../images/sun.png" alt="">
+     <h4>20</h4>
   </div>
   <div class="complexcard-desc-bottom">
-     <h4>4</h4>
-     <h4>5</h4>
+     <h4>June 15</h4>
+     <h4>Low <br>15</h4>
   </div>
 </div>
     </section>`;

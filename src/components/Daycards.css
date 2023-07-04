@@ -9,6 +9,8 @@
     border-radius: 10px;
     margin-bottom: 1rem;
     font-size: 12px;
+    background: rgba(224, 240, 231, 0.5);
+    font-family: sans-serif;
   }
   .daycards-title {
     writing-mode: vertical-lr;
