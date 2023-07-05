@@ -21,7 +21,7 @@ class Standardcard extends HTMLElement {
     };
     this.template = document.createElement("template");
     this.template.innerHTML = `<link rel="stylesheet" href="./components/Standardcard.css" type="text/css" />
-    <section">
+    <section>
         <div class="standard-card">
             <div class="standard-details">
                 <h2>Morning</h2>
@@ -61,7 +61,6 @@ class Standardcard extends HTMLElement {
     }
   }
   handleAPIData(data) {
-    console.log(data);
     const dailyTemp = this.handTemperatureRounding(data.main.temp - 273);
     const tempNum = this.shadowRoot.querySelectorAll(".temp");
     tempNum.forEach((num) => {
