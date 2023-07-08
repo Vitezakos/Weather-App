@@ -1,0 +1,10 @@
+@media only screen and (min-width: 850px) {
+  body {
+    margin: 0;
+  }
+}
+@media only screen and (max-width: 850px) {
+  .desktop-card {
+    display: none;
+  }
+}

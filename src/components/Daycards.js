@@ -189,7 +189,6 @@ class Daycards extends HTMLElement {
     }
   }
   handleAPIData(data) {
-    console.log(data);
     const currentWeather = this.weatherKey(data.weather[0].main);
     this.shadowRoot
       .querySelectorAll(".daycards-card img")

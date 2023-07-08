@@ -69,11 +69,29 @@ class Complexcard extends HTMLElement {
     this.shadowRoot.appendChild(this.template.content.cloneNode(true));
   }
   static get observedAttributes() {
-    return ["city"];
+    return ["city", "season"];
   }
   attributeChangedCallback(name, oldValue, newValue) {
     if (name == "city") {
       this.handleAPIData(JSON.parse(newValue));
+    }
+    if (name == "season") {
+      this.handleSeason(newValue);
+    }
+  }
+  handleSeason(season) {
+    if (season == "winter") {
+      this.shadowRoot.querySelector(".complexcard-card").style.backgroundColor =
+        "rgba(0, 114, 246, 0.17)";
+    } else if (season == "summer") {
+      this.shadowRoot.querySelector(".complexcard-card").style.backgroundColor =
+        "rgba(10, 239, 115, 0.17)";
+    } else if (season == "spring") {
+      this.shadowRoot.querySelector(".complexcard-card").style.backgroundColor =
+        "rgba(10, 239, 115, 0.17)";
+    } else if (season == "autumn") {
+      this.shadowRoot.querySelector(".complexcard-card").style.backgroundColor =
+        "rgba(197, 125, 19, 0.49)";
     }
   }
   handleAPIData(data) {

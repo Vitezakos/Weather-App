@@ -8,6 +8,7 @@ class DropDown extends HTMLElement {
       no: "Oslo",
       uk: "London",
       ro: "Bucharest",
+      au: "Canberra",
     };
     this.dropdownCity = this.locations["hu"];
     this.template = document.createElement("template");
@@ -20,6 +21,7 @@ class DropDown extends HTMLElement {
           <a href="#">${this.locations["uk"]}</a>
           <a href="#">${this.locations["no"]}</a>
           <a href="#">${this.locations["ro"]}</a>
+          <a href="#">${this.locations["au"]}</a>
         </div>
       </div>
     </section>`;
