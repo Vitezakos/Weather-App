@@ -13,18 +13,22 @@ class Desktopcard extends HTMLElement {
   }
 
   static get observedAttributes() {
-    return ["city", "text", "color", "outline"];
+    return ["city", "text", "color", "outline", "size"];
   }
   attributeChangedCallback(name, oldValue, newValue) {
-    if (name == "city") {
-      this.handleAPIData(JSON.parse(newValue));
-    }
+    const card = this.shadowRoot.querySelector(".desktop-card");
     if (name == "text") {
-      this.shadowRoot.querySelector(".desktop-card").textContent = newValue;
+      card.textContent = newValue;
     }
-  }
-  handleAPIData(data) {
-    //console.log(data);
+    if (name == "color") {
+      card.style.background = newValue;
+    }
+    if (name == "outline") {
+      card.style.color = newValue;
+    }
+    if (name == "size") {
+      card.style = newValue;
+    }
   }
 }
 

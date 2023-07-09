@@ -26,7 +26,7 @@ class Daycards extends HTMLElement {
       4: "Thursday",
       5: "Friday",
       6: "Saturday",
-      7: "Sunday",
+      0: "Sunday",
     };
     this.template = document.createElement("template");
     this.template.innerHTML = `<link rel="stylesheet" href="./components/Daycards.css" type="text/css" />
@@ -35,6 +35,10 @@ class Daycards extends HTMLElement {
         <div class="daycards-card">
           <h2 class="daycards-title">Thursday</h2>
           <img src="../../images/sun.png" />
+          <div class ="desktop">
+            <h2 class="max">0</h>
+            <h2 class="min">0</h>
+          </div>
           <div class="daycards-details">
             <h2>Morning</h2>
             <h2 class="temp">20</h2>
@@ -55,6 +59,10 @@ class Daycards extends HTMLElement {
         <div class="daycards-card">
           <h2 class="daycards-title">Thursday</h2>
           <img src="../../images/sun.png" />
+          <div class ="desktop">
+            <h2 class="max">0</h>
+            <h2 class="min">0</h>
+          </div>
           <div class="daycards-details">
             <h2>Morning</h2>
             <h2 class="temp">20</h2>
@@ -75,6 +83,10 @@ class Daycards extends HTMLElement {
         <div class="daycards-card">
           <h2 class="daycards-title">Thursday</h2>
           <img src="../../images/sun.png" />
+          <div class ="desktop">
+            <h2 class="max">0</h>
+            <h2 class="min">0</h>
+          </div>
           <div class="daycards-details">
             <h2>Morning</h2>
             <h2 class="temp">20</h2>
@@ -95,6 +107,10 @@ class Daycards extends HTMLElement {
         <div class="daycards-card">
           <h2 class="daycards-title">Thursday</h2>
           <img src="../../images/sun.png" />
+          <div class ="desktop">
+            <h2 class="max">0</h>
+            <h2 class="min">0</h>
+          </div>
           <div class="daycards-details">
             <h2>Morning</h2>
             <h2 class="temp">20</h2>
@@ -115,6 +131,10 @@ class Daycards extends HTMLElement {
         <div class="daycards-card">
           <h2 class="daycards-title">Thursday</h2>
           <img src="../../images/sun.png" />
+          <div class ="desktop">
+            <h2 class="max">0</h>
+            <h2 class="min">0</h>
+          </div>
           <div class="daycards-details">
             <h2>Morning</h2>
             <h2 class="temp">20</h2>
@@ -135,6 +155,10 @@ class Daycards extends HTMLElement {
         <div class="daycards-card">
           <h2 class="daycards-title">Thursday</h2>
           <img src="../../images/sun.png" />
+          <div class ="desktop">
+            <h2 class="max">0</h>
+            <h2 class="min">0</h>
+          </div>
           <div class="daycards-details">
             <h2>Morning</h2>
             <h2 class="temp">20</h2>
@@ -155,6 +179,10 @@ class Daycards extends HTMLElement {
         <div class="daycards-card">
           <h2 class="daycards-title">Thursday</h2>
           <img src="../../images/sun.png" />
+          <div class ="desktop">
+            <h2 class="max">0</h>
+            <h2 class="min">0</h>
+          </div>
           <div class="daycards-details">
             <h2>Morning</h2>
             <h2 class="temp">20</h2>
@@ -209,6 +237,14 @@ class Daycards extends HTMLElement {
       }
       days++;
     }
+    this.shadowRoot.querySelectorAll(".max").forEach((target) => {
+      target.textContent =
+        this.handTemperatureRounding(data.main.temp_max - 273) + "°" + "C";
+    });
+    this.shadowRoot.querySelectorAll(".min").forEach((target) => {
+      target.textContent =
+        this.handTemperatureRounding(data.main.temp_min - 273) + "°" + "C";
+    });
   }
   whatDay(date) {
     return this.weekDays[date];

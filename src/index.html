@@ -12,14 +12,19 @@
     <title>Weather app</title>
   </head>
   <body>
-    <div class="container"></div>
     <drop-down></drop-down>
-    <desktop-card id="City"></desktop-card>
-    <desktop-card id="Date"></desktop-card>
-    <desktop-card id="Time"></desktop-card>
-    <desktop-card id="Weather"></desktop-card>
-    <desktop-card id="Pressure"></desktop-card>
-    <desktop-card id="Temp"></desktop-card>
+    <div class="desktop-cards">
+      <div class="desktop-left">
+        <desktop-card class="backgroundBlack" id="City"></desktop-card>
+        <desktop-card class="backgroundBlack" id="Date"></desktop-card>
+        <desktop-card class="backgroundBlack" id="Time"></desktop-card>
+        <desktop-card class="backgroundWhite" id="Weather"></desktop-card>
+      </div>
+      <div class="desktop-right">
+        <desktop-card class="backgroundWhite" id="Pressure"></desktop-card>
+        <desktop-card class="backgroundWhite" id="Temp"></desktop-card>
+      </div>
+    </div>
     <complex-card></complex-card>
     <standard-card></standard-card>
     <day-cards></day-cards>

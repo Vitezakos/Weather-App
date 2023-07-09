@@ -1,6 +1,21 @@
 @media only screen and (min-width: 850px) {
-  body {
+  .desktop-card {
+    border: 1px solid black;
+    width: max-content;
+    min-width: 143px;
+    min-height: 51px;
+    font-family: serif;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin: 0;
+    margin-bottom: 1rem;
+    box-sizing: border-box;
   }
 }
 @media only screen and (max-width: 850px) {
