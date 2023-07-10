@@ -15,7 +15,7 @@ class DropDown extends HTMLElement {
     this.template.innerHTML = `<link rel="stylesheet" href="./components/DropDown.css" type="text/css" />
     <section>
       <div class="dropdown">
-        <button class="dropdown-btn">${this.dropdownCity}</button>
+        <button class="dropdown-btn">${this.dropdownCity}<img src="../images/dropdown.png"/></button>
         <div class="dropdown-options">
           <a href="#">${this.locations["hu"]}</a>
           <a href="#">${this.locations["uk"]}</a>
@@ -47,17 +47,22 @@ class DropDown extends HTMLElement {
       getKeyByValue(this.locations, this.dropdownCity)
     );
   }
-
+  onclick(e) {
+    const btn = this.parentElement.querySelector(".dropdown-options");
+    btn.classList.add("dropdown-show");
+    e.stopPropagation();
+    e.preventDefault();
+  }
   citySwap(e) {
     const city = e.target.innerText;
-    this.shadowRoot.querySelector(".dropdown-btn").innerText = city;
+    this.shadowRoot.querySelector(".dropdown-btn").innerHTML =
+      city + `<img src="../images/dropdown.png"/>`;
     function getKeyByValue(object, value) {
       return Object.keys(object).find((key) => object[key] === value);
     }
     const state = getKeyByValue(this.locations, city);
     this.fetchRequest(city, state);
   }
-
   static get observedAttributes() {
     return ["state"];
   }
@@ -71,13 +76,6 @@ class DropDown extends HTMLElement {
   closeBtn() {
     const btn = this.shadowRoot.querySelector(".dropdown-options");
     btn.classList.remove("dropdown-show");
-  }
-
-  onclick(e) {
-    const btn = this.parentElement.querySelector(".dropdown-options");
-    btn.classList.add("dropdown-show");
-    e.stopPropagation();
-    e.preventDefault();
   }
 
   fetchRequest(city, state) {

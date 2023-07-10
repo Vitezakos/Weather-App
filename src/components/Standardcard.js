@@ -61,7 +61,7 @@ class Standardcard extends HTMLElement {
     }
   }
   handleAPIData(data) {
-    const dailyTemp = this.handTemperatureRounding(data.main.temp - 273);
+    const dailyTemp = this.handleTemperatureRounding(data.main.temp - 273);
     const tempNum = this.shadowRoot.querySelectorAll(".temp");
     tempNum.forEach((num) => {
       num.textContent = dailyTemp.toString();
@@ -73,28 +73,7 @@ class Standardcard extends HTMLElement {
         weather.src = `../../images/${currentWeather}.png`;
       });
   }
-  weatherKey(key) {
-    if (this.weatherMain["sun"].includes(key)) {
-      key = "sun";
-      return key;
-    } else if (this.weatherMain["cloud"].includes(key)) {
-      key = "cloud";
-      return key;
-    } else if (this.weatherMain["rain"].includes(key)) {
-      key = "rain";
-      return key;
-    } else if (this.weatherMain["storm"].includes(key)) {
-      key = "storm";
-      return key;
-    } else if (this.weatherMain["snow"].includes(key)) {
-      key = "snow";
-      return key;
-    } else {
-      key = "sun";
-      return key;
-    }
-  }
-  handTemperatureRounding(temp) {
+  handleTemperatureRounding(temp) {
     if (temp >= 0) {
       if (Math.floor(temp % 2) == 0) {
         if (temp % 2 >= 0.5) {
@@ -116,6 +95,27 @@ class Standardcard extends HTMLElement {
           return Math.ceil(-temp);
         } else return Math.floor(-temp);
       }
+    }
+  }
+  weatherKey(key) {
+    if (this.weatherMain["sun"].includes(key)) {
+      key = "sun";
+      return key;
+    } else if (this.weatherMain["cloud"].includes(key)) {
+      key = "cloud";
+      return key;
+    } else if (this.weatherMain["rain"].includes(key)) {
+      key = "rain";
+      return key;
+    } else if (this.weatherMain["storm"].includes(key)) {
+      key = "storm";
+      return key;
+    } else if (this.weatherMain["snow"].includes(key)) {
+      key = "snow";
+      return key;
+    } else {
+      key = "sun";
+      return key;
     }
   }
 }

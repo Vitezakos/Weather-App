@@ -223,7 +223,7 @@ class Daycards extends HTMLElement {
       .forEach((weather) => {
         weather.src = `../../images/${currentWeather}.png`;
       });
-    const temp = this.handTemperatureRounding(data.main.temp - 273);
+    const temp = this.handleTemperatureRounding(data.main.temp - 273);
     this.shadowRoot.querySelectorAll(".temp").forEach((weather) => {
       weather.textContent = temp;
     });
@@ -232,22 +232,19 @@ class Daycards extends HTMLElement {
     let days = new Date().getDay();
     for (let i = 0; i < day.length; i++) {
       day[i].textContent = this.whatDay(days);
-      if (days >= 6) {
+      days++;
+      if (days >= 7) {
         days = days % 7;
       }
-      days++;
     }
     this.shadowRoot.querySelectorAll(".max").forEach((target) => {
       target.textContent =
-        this.handTemperatureRounding(data.main.temp_max - 273) + "°" + "C";
+        this.handleTemperatureRounding(data.main.temp_max - 273) + "°" + "C";
     });
     this.shadowRoot.querySelectorAll(".min").forEach((target) => {
       target.textContent =
-        this.handTemperatureRounding(data.main.temp_min - 273) + "°" + "C";
+        this.handleTemperatureRounding(data.main.temp_min - 273) + "°" + "C";
     });
-  }
-  whatDay(date) {
-    return this.weekDays[date];
   }
   weatherKey(key) {
     if (this.weatherMain["sun"].includes(key)) {
@@ -270,7 +267,7 @@ class Daycards extends HTMLElement {
       return key;
     }
   }
-  handTemperatureRounding(temp) {
+  handleTemperatureRounding(temp) {
     if (temp >= 0) {
       if (Math.floor(temp % 2) == 0) {
         if (temp % 2 >= 0.5) {
@@ -293,6 +290,9 @@ class Daycards extends HTMLElement {
         } else return Math.floor(-temp);
       }
     }
+  }
+  whatDay(date) {
+    return this.weekDays[date];
   }
 }
 

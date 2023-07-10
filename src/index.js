@@ -34,7 +34,7 @@ btn.addEventListener("citychanged", (event) => {
       "text",
       posOrNeg(event.detail.message.main.temp - 273) +
         " " +
-        handTemperatureRounding(event.detail.message.main.temp - 273) +
+        handleTemperatureRounding(event.detail.message.main.temp - 273) +
         "°" +
         "C"
     );
@@ -43,8 +43,44 @@ btn.addEventListener("citychanged", (event) => {
   });
   getSeason(event.detail.message.coord.lat);
 });
-
-function handTemperatureRounding(temp) {
+function getMonths() {
+  months = {
+    0: "January",
+    1: "February",
+    2: "March",
+    3: "April",
+    4: "May",
+    5: "June",
+    6: "July",
+    7: "August",
+    8: "September",
+    9: "October",
+    10: "November",
+    11: "December",
+  };
+  const thisMonth = new Date().getMonth();
+  const now = months[thisMonth];
+  const today = new Date().getUTCDate();
+  const date = now + " " + today;
+  return date;
+}
+function currentTime() {
+  const hour = new Date().getHours();
+  let min = new Date().getMinutes();
+  if (min < 10) {
+    min = "0" + min;
+  }
+  const time = hour + ":" + min;
+  return time;
+}
+function posOrNeg(data) {
+  if (data >= 0) {
+    return "+";
+  } else {
+    return "-";
+  }
+}
+function handleTemperatureRounding(temp) {
   if (temp >= 0) {
     if (Math.floor(temp % 2) == 0) {
       if (temp % 2 >= 0.5) {
@@ -68,46 +104,6 @@ function handTemperatureRounding(temp) {
     }
   }
 }
-
-function posOrNeg(data) {
-  if (data >= 0) {
-    return "+";
-  } else {
-    return "-";
-  }
-}
-function currentTime() {
-  const hour = new Date().getHours();
-  let min = new Date().getMinutes();
-  if (min < 10) {
-    min = "0" + min;
-  }
-  const time = hour + ":" + min;
-  return time;
-}
-
-function getMonths() {
-  months = {
-    0: "January",
-    1: "February",
-    2: "March",
-    3: "April",
-    4: "May",
-    5: "June",
-    6: "July",
-    7: "August",
-    8: "September",
-    9: "October",
-    10: "November",
-    11: "December",
-  };
-  const thisMonth = new Date().getMonth();
-  const now = months[thisMonth];
-  const today = new Date().getUTCDate();
-  const date = now + " " + today;
-  return date;
-}
-
 function getSeason(latitude) {
   const months = {
     0: "January",

@@ -101,9 +101,9 @@ class Complexcard extends HTMLElement {
     this.shadowRoot.querySelector(".today").textContent = this.whatDay(day);
     this.shadowRoot.querySelector(".month").textContent =
       this.whatMonth(month) + " " + date;
-    const max = this.handTemperatureRounding(data.main.temp_max - 273);
-    const temp = this.handTemperatureRounding(data.main.temp - 273);
-    const min = this.handTemperatureRounding(data.main.temp_min - 273);
+    const max = this.handleTemperatureRounding(data.main.temp_max - 273);
+    const temp = this.handleTemperatureRounding(data.main.temp - 273);
+    const min = this.handleTemperatureRounding(data.main.temp_min - 273);
     this.shadowRoot.querySelector(".max").innerHTML = `High <br> ${max}`;
     this.shadowRoot.querySelector(".temp").innerHTML = `${temp}`;
     this.shadowRoot.querySelector(".min").innerHTML = `Low <br> ${min}`;
@@ -119,28 +119,7 @@ class Complexcard extends HTMLElement {
   whatMonth(date) {
     return this.months[date];
   }
-  weatherKey(key) {
-    if (this.weatherMain["sun"].includes(key)) {
-      key = "sun";
-      return key;
-    } else if (this.weatherMain["cloud"].includes(key)) {
-      key = "cloud";
-      return key;
-    } else if (this.weatherMain["rain"].includes(key)) {
-      key = "rain";
-      return key;
-    } else if (this.weatherMain["storm"].includes(key)) {
-      key = "storm";
-      return key;
-    } else if (this.weatherMain["snow"].includes(key)) {
-      key = "snow";
-      return key;
-    } else {
-      key = "sun";
-      return key;
-    }
-  }
-  handTemperatureRounding(temp) {
+  handleTemperatureRounding(temp) {
     if (temp >= 0) {
       if (Math.floor(temp % 2) == 0) {
         if (temp % 2 >= 0.5) {
@@ -162,6 +141,27 @@ class Complexcard extends HTMLElement {
           return Math.ceil(-temp);
         } else return Math.floor(-temp);
       }
+    }
+  }
+  weatherKey(key) {
+    if (this.weatherMain["sun"].includes(key)) {
+      key = "sun";
+      return key;
+    } else if (this.weatherMain["cloud"].includes(key)) {
+      key = "cloud";
+      return key;
+    } else if (this.weatherMain["rain"].includes(key)) {
+      key = "rain";
+      return key;
+    } else if (this.weatherMain["storm"].includes(key)) {
+      key = "storm";
+      return key;
+    } else if (this.weatherMain["snow"].includes(key)) {
+      key = "snow";
+      return key;
+    } else {
+      key = "sun";
+      return key;
     }
   }
 }
