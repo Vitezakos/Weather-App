@@ -5,7 +5,6 @@
   justify-content: space-around;
   margin-bottom: 2rem;
   gap: 5px;
-  font-size: 12px;
 }
 .standard-details {
   display: flex;
@@ -23,10 +22,14 @@
     rgba(0, 0, 0, 0),
     rgba(255, 255, 255, 1)
   );
-  font-family: sans-serif;
 }
 .standard-card .standard-details h2 {
   margin: 0;
+  font-family: Raleway;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
 }
 img {
   width: 4rem;

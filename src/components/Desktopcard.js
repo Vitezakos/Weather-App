@@ -13,7 +13,7 @@ class Desktopcard extends HTMLElement {
   }
 
   static get observedAttributes() {
-    return ["city", "text", "color", "outline", "size"];
+    return ["city", "text", "color", "outline", "size", "shadow"];
   }
   attributeChangedCallback(name, oldValue, newValue) {
     const card = this.shadowRoot.querySelector(".desktop-card");
@@ -28,6 +28,9 @@ class Desktopcard extends HTMLElement {
     }
     if (name == "size") {
       card.style = newValue;
+    }
+    if (name == "shadow") {
+      card.style.textShadow = newValue;
     }
   }
 }

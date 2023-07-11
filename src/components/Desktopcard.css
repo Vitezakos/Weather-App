@@ -4,11 +4,6 @@
     width: max-content;
     min-width: 143px;
     min-height: 51px;
-    font-family: serif;
-    font-size: 30px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
     border-radius: 10px;
     display: flex;
     justify-content: center;
@@ -16,6 +11,11 @@
     margin: 0;
     margin-bottom: 1rem;
     box-sizing: border-box;
+    font-family: Jost;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
   }
 }
 @media only screen and (max-width: 850px) {

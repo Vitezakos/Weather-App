@@ -34,7 +34,7 @@ class Daycards extends HTMLElement {
       <div class="daycards-all">
         <div class="daycards-card">
           <h2 class="daycards-title">Thursday</h2>
-          <img src="../../images/sun.png" />
+          <img src="./images/sun.png" />
           <div class ="desktop">
             <h2 class="max">0</h>
             <h2 class="min">0</h>
@@ -58,7 +58,7 @@ class Daycards extends HTMLElement {
         </div>
         <div class="daycards-card">
           <h2 class="daycards-title">Thursday</h2>
-          <img src="../../images/sun.png" />
+          <img src="./images/sun.png" />
           <div class ="desktop">
             <h2 class="max">0</h>
             <h2 class="min">0</h>
@@ -82,7 +82,7 @@ class Daycards extends HTMLElement {
         </div>
         <div class="daycards-card">
           <h2 class="daycards-title">Thursday</h2>
-          <img src="../../images/sun.png" />
+          <img src="./images/sun.png" />
           <div class ="desktop">
             <h2 class="max">0</h>
             <h2 class="min">0</h>
@@ -106,7 +106,7 @@ class Daycards extends HTMLElement {
         </div>
         <div class="daycards-card">
           <h2 class="daycards-title">Thursday</h2>
-          <img src="../../images/sun.png" />
+          <img src="./images/sun.png" />
           <div class ="desktop">
             <h2 class="max">0</h>
             <h2 class="min">0</h>
@@ -130,7 +130,7 @@ class Daycards extends HTMLElement {
         </div>
         <div class="daycards-card">
           <h2 class="daycards-title">Thursday</h2>
-          <img src="../../images/sun.png" />
+          <img src="./images/sun.png" />
           <div class ="desktop">
             <h2 class="max">0</h>
             <h2 class="min">0</h>
@@ -154,7 +154,7 @@ class Daycards extends HTMLElement {
         </div>
         <div class="daycards-card">
           <h2 class="daycards-title">Thursday</h2>
-          <img src="../../images/sun.png" />
+          <img src="./images/sun.png" />
           <div class ="desktop">
             <h2 class="max">0</h>
             <h2 class="min">0</h>
@@ -178,7 +178,7 @@ class Daycards extends HTMLElement {
         </div>
         <div class="daycards-card">
           <h2 class="daycards-title">Thursday</h2>
-          <img src="../../images/sun.png" />
+          <img src="./images/sun.png" />
           <div class ="desktop">
             <h2 class="max">0</h>
             <h2 class="min">0</h>
@@ -217,21 +217,21 @@ class Daycards extends HTMLElement {
     }
   }
   handleAPIData(data) {
-    const currentWeather = this.weatherKey(data.weather[0].main);
+    const currentWeather = this.getWeather(data.weather[0].main);
+    const temp = this.handleTemperatureRounding(data.main.temp - 273);
+    const day = this.shadowRoot.querySelectorAll(".daycards-title");
+    const today = this.getCurrentDay(new Date().getDay());
+    let days = new Date().getDay();
     this.shadowRoot
       .querySelectorAll(".daycards-card img")
       .forEach((weather) => {
-        weather.src = `../../images/${currentWeather}.png`;
+        weather.src = `./images/${currentWeather}.png`;
       });
-    const temp = this.handleTemperatureRounding(data.main.temp - 273);
     this.shadowRoot.querySelectorAll(".temp").forEach((weather) => {
       weather.textContent = temp;
     });
-    const day = this.shadowRoot.querySelectorAll(".daycards-title");
-    const today = this.whatDay(new Date().getDay());
-    let days = new Date().getDay();
     for (let i = 0; i < day.length; i++) {
-      day[i].textContent = this.whatDay(days);
+      day[i].textContent = this.getCurrentDay(days);
       days++;
       if (days >= 7) {
         days = days % 7;
@@ -246,7 +246,7 @@ class Daycards extends HTMLElement {
         this.handleTemperatureRounding(data.main.temp_min - 273) + "°" + "C";
     });
   }
-  weatherKey(key) {
+  getWeather(key) {
     if (this.weatherMain["sun"].includes(key)) {
       key = "sun";
       return key;
@@ -291,7 +291,7 @@ class Daycards extends HTMLElement {
       }
     }
   }
-  whatDay(date) {
+  getCurrentDay(date) {
     return this.weekDays[date];
   }
 }

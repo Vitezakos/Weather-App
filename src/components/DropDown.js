@@ -15,7 +15,7 @@ class DropDown extends HTMLElement {
     this.template.innerHTML = `<link rel="stylesheet" href="./components/DropDown.css" type="text/css" />
     <section>
       <div class="dropdown">
-        <button class="dropdown-btn">${this.dropdownCity}<img src="../images/dropdown.png"/></button>
+        <button class="dropdown-btn">${this.dropdownCity}<img src="./images/dropdown.png"/></button>
         <div class="dropdown-options">
           <a href="#">${this.locations["hu"]}</a>
           <a href="#">${this.locations["uk"]}</a>
@@ -56,7 +56,7 @@ class DropDown extends HTMLElement {
   citySwap(e) {
     const city = e.target.innerText;
     this.shadowRoot.querySelector(".dropdown-btn").innerHTML =
-      city + `<img src="../images/dropdown.png"/>`;
+      city + `<img src="./images/dropdown.png"/>`;
     function getKeyByValue(object, value) {
       return Object.keys(object).find((key) => object[key] === value);
     }
@@ -79,7 +79,7 @@ class DropDown extends HTMLElement {
   }
 
   fetchRequest(city, state) {
-    const url = `http://api.openweathermap.org/data/2.5/weather?q=${city},${state}${this.apiKey}`;
+    const url = `http://api.openweathermap.org/data/2.5/weather?q=${city},${state}&APPID=${this.apiKey}`;
     fetch(url)
       .then((response) => {
         return response.json();

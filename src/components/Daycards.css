@@ -7,18 +7,20 @@
   border: 1px solid black;
   border-radius: 10px;
   margin-bottom: 1rem;
-  font-size: 12px;
   background: rgba(224, 240, 231, 0.5);
-  font-family: sans-serif;
   color: #000;
-  font-size: 8px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
 }
 .daycards-card h2 {
   display: flex;
   justify-content: center;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  font-family: Raleway;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
 }
 .daycards-title {
   writing-mode: vertical-lr;
@@ -27,6 +29,7 @@
   font-size: 15px;
   margin-top: 2px;
   margin-bottom: 2px;
+  font-family: Raleway;
 }
 
 img {
@@ -53,7 +56,7 @@ img {
   }
   .daycards-title {
     writing-mode: horizontal-tb;
-    transform: rotate(0deg);
+    transform: none;
   }
   .desktop {
     display: flex;
@@ -72,6 +75,7 @@ img {
   img {
     height: 6rem;
     width: 6rem;
+    border: none;
   }
   .daycards-details {
     display: none;

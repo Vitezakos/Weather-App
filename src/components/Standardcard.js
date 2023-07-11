@@ -25,22 +25,22 @@ class Standardcard extends HTMLElement {
         <div class="standard-card">
             <div class="standard-details">
                 <h2>Morning</h2>
-                <img src="../../images/sun.png">
+                <img src="./images/sun.png">
                 <h2 class ="temp">0</h2>
             </div>
             <div class="standard-details">
                 <h2>Afternoon</h2>
-                <img src="../../images/sun.png">
+                <img src="./images/sun.png">
                 <h2 class ="temp">0</h2>
             </div>
             <div class="standard-details">
                 <h2>Evening</h2>
-                <img src="../../images/sun.png">
+                <img src="./images/sun.png">
                 <h2 class ="temp">0</h2>
             </div>
             <div class="standard-details">
                 <h2>Overnight</h2>
-                <img src="../../images/sun.png">
+                <img src="./images/sun.png">
                 <h2 class ="temp">0</h2>
             </div>
         </div>
@@ -63,14 +63,14 @@ class Standardcard extends HTMLElement {
   handleAPIData(data) {
     const dailyTemp = this.handleTemperatureRounding(data.main.temp - 273);
     const tempNum = this.shadowRoot.querySelectorAll(".temp");
+    const currentWeather = this.getWeather(data.weather[0].main);
     tempNum.forEach((num) => {
       num.textContent = dailyTemp.toString();
     });
-    const currentWeather = this.weatherKey(data.weather[0].main);
     this.shadowRoot
       .querySelectorAll(".standard-details img")
       .forEach((weather) => {
-        weather.src = `../../images/${currentWeather}.png`;
+        weather.src = `./images/${currentWeather}.png`;
       });
   }
   handleTemperatureRounding(temp) {
@@ -97,7 +97,7 @@ class Standardcard extends HTMLElement {
       }
     }
   }
-  weatherKey(key) {
+  getWeather(key) {
     if (this.weatherMain["sun"].includes(key)) {
       key = "sun";
       return key;

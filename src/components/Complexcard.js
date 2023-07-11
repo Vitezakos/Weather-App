@@ -42,22 +42,20 @@ class Complexcard extends HTMLElement {
       storm: ["Thunderstorm", "Tornado"],
       snow: ["Snow"],
     };
-    this.today = "Monday";
-    this.month = "June 15";
     this.template = document.createElement("template");
     this.template.innerHTML = `<link rel="stylesheet" href="./components/Complexcard.css" type="text/css" />
     <section>
 <div class="complexcard-card">
   <div class="complexcard-desc-top">
-     <h4 class="today">${this.today}</h4>
+     <h4 class="today">Monday</h4>
      <h4 class="max">High <br>25</h4>
   </div>
   <div class="complexcard-desc-middle">
-     <img src="../../images/sun.png" alt="">
+     <img src="./images/sun.png" alt="">
      <h4 class="temp">20</h4>
   </div>
   <div class="complexcard-desc-bottom">
-     <h4 class="month">${this.month}</h4>
+     <h4 class="month">June 15</h4>
      <h4 class="min">Low <br>15</h4>
   </div>
 </div>
@@ -80,43 +78,41 @@ class Complexcard extends HTMLElement {
     }
   }
   handleSeason(season) {
+    const card = this.shadowRoot.querySelector(".complexcard-card");
     if (season == "winter") {
-      this.shadowRoot.querySelector(".complexcard-card").style.backgroundColor =
-        "rgba(0, 114, 246, 0.17)";
+      card.style.backgroundColor = "rgba(0, 114, 246, 0.17)";
     } else if (season == "summer") {
-      this.shadowRoot.querySelector(".complexcard-card").style.backgroundColor =
-        "rgba(10, 239, 115, 0.17)";
+      card.style.backgroundColor = "rgba(10, 239, 115, 0.17)";
     } else if (season == "spring") {
-      this.shadowRoot.querySelector(".complexcard-card").style.backgroundColor =
-        "rgba(10, 239, 115, 0.17)";
+      card.style.backgroundColor = "rgba(10, 239, 115, 0.17)";
     } else if (season == "autumn") {
-      this.shadowRoot.querySelector(".complexcard-card").style.backgroundColor =
-        "rgba(197, 125, 19, 0.49)";
+      card.style.backgroundColor = "rgba(197, 125, 19, 0.49)";
     }
   }
   handleAPIData(data) {
     const day = new Date().getDay();
     const month = new Date().getMonth();
     const date = new Date().getDate();
-    this.shadowRoot.querySelector(".today").textContent = this.whatDay(day);
-    this.shadowRoot.querySelector(".month").textContent =
-      this.whatMonth(month) + " " + date;
     const max = this.handleTemperatureRounding(data.main.temp_max - 273);
     const temp = this.handleTemperatureRounding(data.main.temp - 273);
     const min = this.handleTemperatureRounding(data.main.temp_min - 273);
+    const currentWeather = this.getWeather(data.weather[0].main);
+    this.shadowRoot.querySelector(".today").textContent =
+      this.getCurrentDay(day);
+    this.shadowRoot.querySelector(".month").textContent =
+      this.getCurrentMonth(month) + " " + date;
     this.shadowRoot.querySelector(".max").innerHTML = `High <br> ${max}`;
     this.shadowRoot.querySelector(".temp").innerHTML = `${temp}`;
     this.shadowRoot.querySelector(".min").innerHTML = `Low <br> ${min}`;
-    const currentWeather = this.weatherKey(data.weather[0].main);
     this.shadowRoot.querySelector(
       ".complexcard-desc-middle img"
-    ).src = `../../images/${currentWeather}.png`;
+    ).src = `./images/${currentWeather}.png`;
   }
 
-  whatDay(date) {
+  getCurrentDay(date) {
     return this.weekDays[date];
   }
-  whatMonth(date) {
+  getCurrentMonth(date) {
     return this.months[date];
   }
   handleTemperatureRounding(temp) {
@@ -143,7 +139,7 @@ class Complexcard extends HTMLElement {
       }
     }
   }
-  weatherKey(key) {
+  getWeather(key) {
     if (this.weatherMain["sun"].includes(key)) {
       key = "sun";
       return key;

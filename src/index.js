@@ -41,6 +41,18 @@ btn.addEventListener("citychanged", (event) => {
   document.querySelectorAll(".backgroundWhite").forEach((target) => {
     target.setAttribute("outline", "#fff");
   });
+  document
+    .getElementById("Pressure")
+    .setAttribute(
+      "shadow",
+      "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000"
+    );
+  document
+    .getElementById("Temp")
+    .setAttribute(
+      "shadow",
+      "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000"
+    );
   getSeason(event.detail.message.coord.lat);
 });
 function getMonths() {
@@ -125,7 +137,7 @@ function getSeason(latitude) {
   if (latitude >= 0) {
     if (season == 11 || (season >= 0 && season < 2)) {
       document.querySelector("body").style.backgroundImage =
-        'url("../images/winter.jpg")';
+        'url("./images/winter.jpg")';
       complex.setAttribute("season", "winter");
       document.querySelectorAll(".backgroundBlack").forEach((target) => {
         target.setAttribute(
@@ -141,7 +153,7 @@ function getSeason(latitude) {
       });
     } else if (season >= 0 && season < 5) {
       document.querySelector("body").style.backgroundImage =
-        'url("../images/spring.jpg")';
+        'url("./images/spring.jpg")';
       complex.setAttribute("season", "spring");
       document.querySelectorAll(".backgroundBlack").forEach((target) => {
         target.setAttribute(
@@ -157,7 +169,7 @@ function getSeason(latitude) {
       });
     } else if (season >= 5 && season < 8) {
       document.querySelector("body").style.backgroundImage =
-        'url("../images/summer.jpg")';
+        'url("./images/summer.jpg")';
       complex.setAttribute("season", "summer");
       document.querySelectorAll(".backgroundBlack").forEach((target) => {
         target.setAttribute(
@@ -173,7 +185,7 @@ function getSeason(latitude) {
       });
     } else if (season >= 8 && season < 11) {
       document.querySelector("body").style.backgroundImage =
-        'url("../images/autumn.jpg")';
+        'url("./images/autumn.jpg")';
       complex.setAttribute("season", "autumn");
       document.querySelectorAll(".backgroundBlack").forEach((target) => {
         target.setAttribute(
@@ -191,7 +203,7 @@ function getSeason(latitude) {
   } else {
     if (season == 11 || (season >= 0 && season < 2)) {
       document.querySelector("body").style.backgroundImage =
-        'url("../images/summer.jpg")';
+        'url("./images/summer.jpg")';
       complex.setAttribute("season", "summer");
       document.querySelectorAll(".backgroundBlack").forEach((target) => {
         target.setAttribute(
@@ -207,11 +219,11 @@ function getSeason(latitude) {
       });
     } else if (season >= 0 && season < 5) {
       document.querySelector("body").style.backgroundImage =
-        'url("../images/autumn.jpg")';
+        'url("./images/autumn.jpg")';
       complex.setAttribute("season", "autumn");
     } else if (season >= 5 && season < 8) {
       document.querySelector("body").style.backgroundImage =
-        'url("../images/winter.jpg")';
+        'url("./images/winter.jpg")';
       complex.setAttribute("season", "winter");
       document.querySelectorAll(".backgroundBlack").forEach((target) => {
         target.setAttribute(
@@ -227,7 +239,7 @@ function getSeason(latitude) {
       });
     } else if (season >= 8 && season < 11) {
       document.querySelector("body").style.backgroundImage =
-        'url("../images/spring.jpg")';
+        'url("./images/spring.jpg")';
       complex.setAttribute("season", "spring");
       document.querySelectorAll(".backgroundBlack").forEach((target) => {
         target.setAttribute(
